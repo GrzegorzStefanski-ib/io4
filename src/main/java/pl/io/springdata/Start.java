@@ -19,5 +19,11 @@ public class Start {
     public void run() {
         Product product = new Product("Ołówek", (float) 1.99, true);
         productRepo.save(product);
+
+        product = new Product("Blok", (float) 8.59, true);
+        productRepo.save(product);
+
+        product = new Product("Gumka", (float) 2.22, false);
+        productRepo.save(product);
     }
 }
