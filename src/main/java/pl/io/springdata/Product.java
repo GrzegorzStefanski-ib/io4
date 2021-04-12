@@ -1,9 +1,8 @@
 package pl.io.springdata;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -15,6 +14,9 @@ public class Product {
     private String name;
     private float price;
     private boolean available;
+
+    @ManyToMany(mappedBy = "products")
+    private Set<Order> orders = new HashSet<>();
 
     public Product(String name, float price, boolean available) {
         this.name = name;
@@ -55,6 +57,14 @@ public class Product {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 
     @Override
