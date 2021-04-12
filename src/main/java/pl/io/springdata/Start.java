@@ -5,6 +5,8 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 @Component
 public class Start {
 
@@ -17,13 +19,14 @@ public class Start {
 
     @EventListener(ApplicationReadyEvent.class)
     public void run() {
-        Product product = new Product("Ołówek", (float) 1.99, true);
+        Product product = new Product("Ołówek",  1.99f, true);
         productRepo.save(product);
 
-        product = new Product("Blok", (float) 8.59, true);
+        product = new Product("Blok", 8.59f, true);
         productRepo.save(product);
 
-        product = new Product("Gumka", (float) 2.22, false);
+        product = new Product("Gumka", 2.22f, false);
         productRepo.save(product);
     }
+
 }
