@@ -35,12 +35,12 @@ public class ProductApi {
     }
 
     @PutMapping("/admin/product")
-    public void updateProduct(@RequestParam Long id, @RequestBody Product product) {
-        products.put(id, product);
+    public Product updateProduct(@RequestParam Long id, @RequestBody Product product) {
+        return products.put(id, product);
     }
 
     @PatchMapping("admin/product")
-    public void patchProduct(@RequestParam Long id, @RequestBody Product product) {
-        products.patch(id, product);
+    public Product patchProduct(@RequestParam Long id, @RequestBody Product product) {
+        return products.patch(id, product);
     }
 }

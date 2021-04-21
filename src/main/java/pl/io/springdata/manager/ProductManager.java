@@ -29,17 +29,17 @@ public class ProductManager {
         return productRepo.save(product);
     }
 
-    public void put(Long id, Product product) {
+    public Product put(Long id, Product product) {
 
         if(!productRepo.existsById(id)){
             throw new RuntimeException();
         }
 
         product.setId(id);
-        productRepo.save(product);
+        return productRepo.save(product);
     }
 
-    public void patch(Long id, Product product) {
+    public Product patch(Long id, Product product) {
 
         if(!productRepo.existsById(id)){
             throw new RuntimeException();
@@ -63,6 +63,6 @@ public class ProductManager {
             oldProduct.setAvailable(availability);
         }
 
-        productRepo.save(oldProduct);
+        return productRepo.save(oldProduct);
     }
 }

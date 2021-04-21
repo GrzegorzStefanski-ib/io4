@@ -35,12 +35,12 @@ public class CustomerApi {
     }
 
     @PutMapping("/admin/customer")
-    public void updateCustomer(@RequestParam Long id, @RequestBody Customer customer) {
-        customers.put(id, customer);
+    public Customer updateCustomer(@RequestParam Long id, @RequestBody Customer customer) {
+        return customers.put(id, customer);
     }
 
     @PatchMapping("admin/customer")
-    public void patchCustomer(@RequestParam Long id, @RequestBody Customer customer) {
-        customers.patch(id, customer);
+    public Customer patchCustomer(@RequestParam Long id, @RequestBody Customer customer) {
+        return customers.patch(id, customer);
     }
 }

@@ -1,0 +1,80 @@
+GET localhost:8082/api/product/all
+
+GET localhost:8082/api/product?id=1
+
+POST localhost:8082/api/admin/product
+{
+    "name": "Kalafior",
+    "price": 9000.01,
+    "available": true
+}
+
+PUT localhost:8082/api/admin/product?id=3
+{
+    "name": "Linijka",
+    "price": 10.99,
+    "available": true
+}
+
+PATCH localhost:8082/api/admin/product?id=3
+{
+    "name": "Pędzel"
+}
+
+GET localhost:8082/api/customer/all
+
+GET localhost:8082/api/customer?id=1
+
+POST localhost:8082/api/admin/customer
+{
+    "name": "Tomek",
+    "address": "Poznań"
+}
+
+PUT localhost:8082/api/admin/customer?id=1
+{
+    "name": "Alicja",
+    "address": "Warszawa"
+}
+
+PATCH localhost:8082/api/admin/customer?id=1
+{
+    "name": "Emilia"
+}
+
+GET localhost:8082/api/order/all
+
+GET localhost:8082/api/order?id=1
+
+POST localhost:8082/api/admin/order
+{
+    "customer": {
+        "id": 1
+    },
+    "products": [
+        {
+            "id": 1
+        }
+    ],
+    "placeDate": "2021-04-21T11:42:52.301462",
+    "status": "in progress"
+}
+
+PUT localhost:8082/api/admin/order?id=1
+{
+    "customer": {
+        "id": 1
+    },
+    "products": [
+        {
+            "id": 2
+        }
+    ],
+    "placeDate": "2021-04-21T12:42:52.301462",
+    "status": "in progress"
+}
+
+PATCH localhost:8082/api/admin/order?id=1
+{
+    "status": "done"
+}

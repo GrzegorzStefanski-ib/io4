@@ -30,18 +30,18 @@ public class CustomerManager {
         return customerRepo.save(product);
     }
 
-    public void put(Long id, Customer product) {
+    public Customer put(Long id, Customer product) {
 
         if(!customerRepo.existsById(id)) {
             throw new RuntimeException();
         }
 
         product.setId(id);
-        customerRepo.save(product);
+        return customerRepo.save(product);
 
     }
 
-    public void patch(Long id, Customer product) {
+    public Customer patch(Long id, Customer product) {
 
         if(!customerRepo.existsById(id)) {
             throw new RuntimeException();
@@ -61,6 +61,6 @@ public class CustomerManager {
         }
 
 
-        customerRepo.save(oldCustomer);
+        return customerRepo.save(oldCustomer);
     }
 }

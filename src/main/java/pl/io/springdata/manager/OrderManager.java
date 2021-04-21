@@ -37,17 +37,17 @@ public class OrderManager {
         orderRepo.deleteById(id);
     }
 
-    public void put(Long id, Order order) {
+    public Order put(Long id, Order order) {
 
         if(!orderRepo.existsById(id)){
             throw new RuntimeException();
         }
 
         order.setId(id);
-        orderRepo.save(order);
+        return orderRepo.save(order);
     }
 
-    public void patch(Long id, Order order) {
+    public Order patch(Long id, Order order) {
 
         if(!orderRepo.existsById(id)){
             throw new RuntimeException();
@@ -78,6 +78,6 @@ public class OrderManager {
             oldOrder.setStatus(status);
         }
 
-        orderRepo.save(oldOrder);
+        return orderRepo.save(oldOrder);
     }
 }

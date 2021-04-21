@@ -34,12 +34,12 @@ public class OrderApi {
     }
 
     @PutMapping("/admin/order")
-    public void updateOrder(@RequestParam Long id, @RequestBody Order order) {
-        orders.put(id, order);
+    public Order updateOrder(@RequestParam Long id, @RequestBody Order order) {
+        return orders.put(id, order);
     }
 
     @PatchMapping("admin/order")
-    public void patchOrder(@RequestParam Long id, @RequestBody Order order) {
-        orders.patch(id, order);
+    public Order patchOrder(@RequestParam Long id, @RequestBody Order order) {
+        return orders.patch(id, order);
     }
 }
