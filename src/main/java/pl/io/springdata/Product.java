@@ -1,8 +1,6 @@
 package pl.io.springdata;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Product {
@@ -12,11 +10,9 @@ public class Product {
     private long id;
 
     private String name;
-    private float price;
-    private boolean available;
+    private Float price;
+    private Boolean available;
 
-    @ManyToMany(mappedBy = "products")
-    private Set<Order> orders = new HashSet<>();
 
     public Product(String name, float price, boolean available) {
         this.name = name;
@@ -43,7 +39,7 @@ public class Product {
         this.name = name;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
@@ -51,7 +47,7 @@ public class Product {
         this.price = price;
     }
 
-    public boolean isAvailable() {
+    public Boolean isAvailable() {
         return available;
     }
 
@@ -59,13 +55,6 @@ public class Product {
         this.available = available;
     }
 
-    public Set<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
-    }
 
     @Override
     public String toString() {

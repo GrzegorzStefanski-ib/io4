@@ -35,7 +35,8 @@ public class DbMockData {
                 add(product1);
                 add(product2);
                 add(product3);
-            }};
+            }
+        };
         Order order = new Order(customer, products, LocalDateTime.now(), "in progress");
 
         productRepo.save(product1);
