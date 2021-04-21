@@ -1,4 +1,4 @@
-package pl.io.springdata;
+package pl.io.springdata.dao.entity;
 
 import javax.persistence.*;
 import java.util.Set;

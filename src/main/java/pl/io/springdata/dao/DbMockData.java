@@ -1,9 +1,15 @@
-package pl.io.springdata;
+package pl.io.springdata.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import pl.io.springdata.dao.entity.Customer;
+import pl.io.springdata.dao.entity.Order;
+import pl.io.springdata.dao.entity.Product;
+import pl.io.springdata.dao.repo.CustomerRepo;
+import pl.io.springdata.dao.repo.OrderRepo;
+import pl.io.springdata.dao.repo.ProductRepo;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
