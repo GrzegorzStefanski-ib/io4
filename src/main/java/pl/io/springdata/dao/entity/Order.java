@@ -1,8 +1,7 @@
-package pl.io.springdata;
+package pl.io.springdata.dao.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,7 +16,8 @@ public class Order {
     private Customer customer;
 
     @ManyToMany
-    private Set<Product> products = new HashSet<>();
+    @JoinTable(name = "order_products", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private Set<Product> products;
 
     private LocalDateTime placeDate;
     private String status;
