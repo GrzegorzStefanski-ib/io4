@@ -10,6 +10,9 @@ import pl.io.springdata.dao.entity.Product;
 import pl.io.springdata.dao.repo.CustomerRepo;
 import pl.io.springdata.dao.repo.OrderRepo;
 import pl.io.springdata.dao.repo.ProductRepo;
+import pl.io.springdata.dao.repo.UserRepo;
+import pl.io.springdata.utils.User;
+import pl.io.springdata.utils.UserDtoBuilder;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -20,12 +23,23 @@ public class DbMockData {
     private ProductRepo productRepo;
     private OrderRepo orderRepo;
     private CustomerRepo customerRepo;
+    private UserRepo userRepo;
+
+    private UserDtoBuilder userDtoBuilder;
 
     @Autowired
-    public DbMockData(ProductRepo productRepo, OrderRepo orderRepo, CustomerRepo customerRepo) {
+    public DbMockData(
+            ProductRepo productRepo,
+            OrderRepo orderRepo,
+            CustomerRepo customerRepo,
+            UserRepo userRepo,
+            UserDtoBuilder userDtoBuilder
+    ) {
         this.productRepo = productRepo;
         this.orderRepo = orderRepo;
         this.customerRepo = customerRepo;
+        this.userRepo = userRepo;
+        this.userDtoBuilder = userDtoBuilder;
     }
 
     @EventListener(ApplicationReadyEvent.class)
@@ -43,12 +57,19 @@ public class DbMockData {
                 add(product3);
             }
         };
+
         Order order = new Order(customer, products, LocalDateTime.now(), "in progress");
+
+        User user1 = new User("User1", "pass1", "ROLE_CUSTOMER");
+        User user2 = new User("User2", "pass2", "ROLE_ADMIN");
 
         productRepo.save(product1);
         productRepo.save(product2);
         productRepo.save(product3);
         customerRepo.save(customer);
         orderRepo.save(order);
+        userRepo.save(userDtoBuilder.build(user1));
+        userRepo.save(userDtoBuilder.build(user2));
+
     }
 }
