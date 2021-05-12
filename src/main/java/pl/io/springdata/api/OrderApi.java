@@ -28,7 +28,7 @@ public class OrderApi {
         return orders.findById(id);
     }
 
-    @PostMapping("/admin/order")
+    @PostMapping("/order")
     public Order addOrder(@RequestBody Order order) {
         return orders.save(order);
     }
